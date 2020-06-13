@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<style type="text/css">
+    div {
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
-    <title>Weather Today and Forever!!!</title>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap-grid.min.css">
+    <title>Weather Today and Forever!</title>
 </head>
-<body>
+<body style="margin-left: 70px; margin-right: 70px; margin-top: 30px">
 
-<h1>Weather Today and Forever!</h1>
-<p>Date</p>
-<p>{{ date }}</p>
-<p>Max</p><p>{{ maxdegree }}</p>
-<p>Min</p><p>{{ mindegree }}</p>
+<h1> Weather Today and Forever</h1>
+<div class="nes-container is-dark is-rounded">
+<h2>Last update:</h2>
+<p>{{ weather.first.date }}</p>
+<h2>Max degree today</h2><p class="nes-text is-primary">{{ weather.first.maxdegree }}</p>
+<h2>Min degree today</h2><p class="nes-text is-warning">{{ weather.first.mindegree }}</p>
+    </div>
+<p>Weather forecast updates every 30 minutes.</p>
+<p>Information from <a href="https://www.gismeteo.by/weather-minsk-4248/">Gismeteo.by</a></p>
+
 </body>
 </html>
