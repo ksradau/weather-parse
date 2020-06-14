@@ -1,0 +1,16 @@
+default:
+  ALLOWED_HOSTS: []
+  DATABASE_URL: ""
+  DEBUG: true
+  SECRET_KEY: ""
+
+development:
+  DEBUG: true
+  DATABASE_URL: ""
+
+heroku:
+  ALLOWED_HOSTS:
+    - .weather-parse.herokuapp.com
+    - 127.0.0.1
+    - localhost
+  DEBUG: true

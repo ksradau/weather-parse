@@ -2,15 +2,20 @@ import os
 from pathlib import Path
 import dj_database_url
 from os import getenv
+from dynaconf import settings as _settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = Path(__file__).parent.resolve()
 
-SECRET_KEY = 'bn-4$x@3=cjmz5py_gx2)(e*cj7o%1l-b8f-*1&o+7wczq+(d8'
+SECRET_KEY = _settings.SECRET_KEY
 
-DEBUG = True
+DEBUG = _settings.DEBUG
 
-ALLOWED_HOSTS = []
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+ALLOWED_HOSTS = _settings.ALLOWED_HOSTS + INTERNAL_IPS + ["localhost"]
 
 
 INSTALLED_APPS = [
@@ -54,16 +59,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-#_db_url = "postgresql://ksw:111@localhost:5432/weatherdb"
-_db_url = getenv("DATABASE_URL")
-#DATABASE_URL = "postgresql://ksw:111@localhost:5432/weatherdb"
-#DATABASE_URL = "postgres://fkxftnotcsuuic:346d8e62f0c6cf94a2dc2b4d46edd0f789818f75e32dde47b246b14772d49ee2@ec2-54-247-78-30.eu-west-1.compute.amazonaws.com:5432/dd7tnau404j2t3"
+_db_url = _settings.DATABASE_URL
+if _settings.ENV_FOR_DYNACONF == "heroku":
+    _db_url = getenv("DATABASE_URL")
 
 
 DATABASES = {
     "default": dj_database_url.parse(_db_url, conn_max_age=600),
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
