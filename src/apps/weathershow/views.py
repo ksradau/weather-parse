@@ -19,11 +19,11 @@ class WeatherView(ListView):
 
         w = WeatherModel.objects.get(id=1)
         d = w.date
-        dnow = datetime.now().replace(tzinfo=pytz.utc)
+        dnow = datetime.now().replace(tzinfo=pytz.utc) + timedelta(hours=3)
 
         delta = dnow - d
 
-        if delta > timedelta(minutes=30):
+        if delta > timedelta(minutes=10):
             url = "https://www.gismeteo.by/weather-minsk-4248/"
 
             r = requests.get(url, headers={
