@@ -5,3 +5,5 @@ class WeatherModel(m.Model):
     date = m.DateTimeField(null=True, blank=True)
     maxdegree = m.TextField(null=True, blank=True)
     mindegree = m.TextField(null=True, blank=True)
+    currentdegree = m.TextField(null=True, blank=True)
+    feeldegree = m.TextField(null=True, blank=True)

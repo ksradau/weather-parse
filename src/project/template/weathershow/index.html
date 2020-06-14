@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style type="text/css">
-    div {
-    margin-top: 40px;
-    margin-left: 100px;
-    margin-right: 100px;
-    }
-</style>
 <head>
     <meta charset="UTF-8">
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
@@ -14,14 +7,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap-grid.min.css">
     <title>Weather Today and Forever!</title>
 </head>
-<body style="margin-left: 70px; margin-right: 70px; margin-top: 30px">
+<body style="margin-left: 130px; margin-right: 130px; margin-top: 30px">
 
 <h1> Weather Today and Forever</h1>
 <div class="nes-container is-dark is-rounded">
 <h2>Last update:</h2>
 <p>{{ weather.first.date }}</p>
-<h2>Max degree today</h2><p class="nes-text is-primary">{{ weather.first.maxdegree }}</p>
-<h2>Min degree today</h2><p class="nes-text is-warning">{{ weather.first.mindegree }}</p>
+    <h2 class="nes-text is-warning">At the moment</h2>
+    <p>Outside <span class="nes-text is-success"><big>{{ weather.first.currentdegree }}</big></span>'C,
+        feels as <span class="nes-text is-success"><big>{{ weather.first.feeldegree }}</big></span>'C</p>
+
+<p>~</p>
+<p>~ ~ ~</p>
+<p>~ ~ ~ ~ ~</p>
+<h3>Max degree today</h3><p><span class="nes-text is-warning">{{ weather.first.maxdegree }}</span>'C</p>
+<h3>Min degree today</h3><p><span class="nes-text is-primary">{{ weather.first.mindegree }}</span>'C</p>
     </div>
 <p>Weather forecast updates every 10 minutes.</p>
 <p>Information from <a href="https://www.gismeteo.by/weather-minsk-4248/">Gismeteo.by</a></p>
