@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
+from os import getenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = Path(__file__).parent.resolve()
@@ -53,17 +54,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+#_db_url = "postgresql://ksw:111@localhost:5432/weatherdb"
+_db_url = getenv("DATABASE_URL")
+#DATABASE_URL = "postgresql://ksw:111@localhost:5432/weatherdb"
+#DATABASE_URL = "postgres://fkxftnotcsuuic:346d8e62f0c6cf94a2dc2b4d46edd0f789818f75e32dde47b246b14772d49ee2@ec2-54-247-78-30.eu-west-1.compute.amazonaws.com:5432/dd7tnau404j2t3"
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weatherdb',
-        'USER': 'ksw',
-        'PASSWORD': '111',
-        'HOST': '127.0.0.1',
-        'PORT': '5432', }
+    "default": dj_database_url.parse(_db_url, conn_max_age=600),
 }
 
 
@@ -83,8 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -96,8 +92,5 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
