@@ -1,3 +1,6 @@
+Pipfile.lock
+.idea/
+.static/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -5,8 +8,6 @@ __pycache__/
 
 # C extensions
 *.so
-.idea
-Pipfile.lock
 # Distribution / packaging
 .Python
 build/
